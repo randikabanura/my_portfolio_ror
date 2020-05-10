@@ -1,4 +1,8 @@
-<div class="background" style="background-image: url(<%= asset_path('img_bg_main.jpg') %>">
+<% if SiteDocument.where(slug: "contact_background_image").exists? && SiteDocument.where(slug: "contact_background_image").first.document.present? %>
+  <div class="background slider-carousel" style="background-image: url(<%= rails_blob_path(SiteDocument.where(slug: "contact_background_image").first.document, disposition: "attachment", only_path: true) %>)">
+<% else %>
+  <div class="background" style="background-image: url(<%= asset_path('img_bg_main.jpg') %>">
+<% end %>
   <div id="contact" class="container section">
     <div class="row">
       <div class="col-md-12">
@@ -54,4 +58,8 @@
       </div>
     </div>
   </div>
-</div>
+<% if SiteDocument.where(slug: "contact_background_image").exists? && SiteDocument.where(slug: "contact_background_image").first.document.present? %>
+  </div>
+<% else %>
+  </div>
+<% end %>

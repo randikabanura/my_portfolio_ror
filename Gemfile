@@ -60,3 +60,4 @@ gem "rails-settings-cached", '>= 0.5.3', '< 0.5.5'
 gem 'activeadmin_settings_cached', '~> 2.0', '>= 2.0.1'
 gem 'activeadmin_medium_editor'
 gem 'waypoints_rails'
+gem "mini_magick"

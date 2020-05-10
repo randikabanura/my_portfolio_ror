@@ -2,12 +2,16 @@
 <!-- Mobile menu -->
 
 <!--Header-->
-<header class="main-header" style="background-image: url(<%= asset_path('img_bg_header.jpg')%>">
+<% if SiteDocument.where(slug: "profile_background_image").exists? && SiteDocument.where(slug: "profile_background_image").first.document.present? %>
+  <header class="main-header" style="background-image: url(<%= rails_blob_path(SiteDocument.where(slug: "profile_background_image").first.document, disposition: "attachment", only_path: true) %>)">
+<% else %>
+  <header class="main-header" style="background-image: url(<%= asset_path('img_bg_header.jpg')%>)">
+<% end %>
   <div class="container">
     <div class="row personal-profile">
       <div class="col-md-4 personal-profile__avatar">
-        <% if Setting.profile_image.present? %>
-          <img class="" src="<%= Setting.profile_image %>" alt="avatar">
+        <% if SiteDocument.where(slug: "profile_image").exists? %>
+          <%= image_tag SiteDocument.where(slug: "profile_image").first.document %>
         <% else %>
           <img class="" src="<%= asset_path('img_avatar.png')%>" alt="avatar">
         <% end %>
@@ -20,7 +24,7 @@
             <dt>Age:</dt>
             <dd><%= Setting.profile_age %></dd>
             <dt>Phone:</dt>
-            <dd><a href="tel:82344563333">8 (234) 456-33-33</a></dd>
+            <dd><a href="tel:<%= Setting.profile_phone %>"><%= number_to_phone(Setting.profile_phone, area_code: true, country_code: 94)  %></a></dd>
             <dt>Email:</dt>
             <dd><a href="mailto:<%= Setting.profile_email %>"><%= Setting.profile_email %></a></dd>
             <dt>Address:</dt>
@@ -35,7 +39,11 @@
       </div>
     </div>
   </div>
-</header>
+<% if SiteDocument.where(slug: "profile_background_image").exists? && SiteDocument.where(slug: "profile_background_image").first.document.present? %>
+  </header>
+<% else %>
+  </header>
+<% end %>
 <!--Header-->
 
 <!--Hello-->
@@ -223,7 +231,11 @@
 
 <!--Testimonials-->
 <div id="testimonials" class="section">
-  <div class="background slider-carousel" style="background-image: url(<%= asset_path('img_bg_main.jpg')%>);">
+  <% if SiteDocument.where(slug: "testimonial_background_image").exists? && SiteDocument.where(slug: "testimonial_background_image").first.document.present? %>
+    <div class="background slider-carousel" style="background-image: url(<%= rails_blob_path(SiteDocument.where(slug: "testimonial_background_image").first.document, disposition: "attachment", only_path: true) %>)">
+  <% else %>
+    <div class="background slider-carousel" style="background-image: url(<%= asset_path('img_bg_main.jpg')%>);">
+  <% end %>
     <div class="container">
       <div id="carouselTestimonials" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -258,7 +270,11 @@
         </div>
       </div>
     </div>
-  </div>
+  <% if SiteDocument.where(slug: "testimonial_background_image").exists? && SiteDocument.where(slug: "testimonial_background_image").first.document.present? %>
+    </div>
+  <% else %>
+    </div>
+  <% end %>
 </div>
 <!--Testimonials-->
 
@@ -379,7 +395,7 @@
         });
         this.destroy();
       },
-      offset: '25%'
+      offset: '75%'
     })
   });
 </script>
