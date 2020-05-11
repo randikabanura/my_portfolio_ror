@@ -3,7 +3,8 @@ class SiteDocument < ApplicationRecord
 
   validates_presence_of :slug
   validates_uniqueness_of :slug
-
+  scope :active, -> { where(status: true) }
+  
   validate :correct_document_mime_type
 
   private

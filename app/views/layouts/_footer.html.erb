@@ -1,5 +1,5 @@
-<% if SiteDocument.where(slug: "contact_background_image").exists? && SiteDocument.where(slug: "contact_background_image").first.document.present? %>
-  <div class="background slider-carousel" style="background-image: url(<%= rails_blob_path(SiteDocument.where(slug: "contact_background_image").first.document, disposition: "attachment", only_path: true) %>)">
+<% if SiteDocument.active.where(slug: "contact_background_image").exists? && SiteDocument.active.where(slug: "contact_background_image").first.document.present? %>
+  <div class="background slider-carousel" style="background-image: url(<%= rails_blob_path(SiteDocument.active.where(slug: "contact_background_image").first.document, disposition: "attachment", only_path: true) %>)">
 <% else %>
   <div class="background" style="background-image: url(<%= asset_path('img_bg_main.jpg') %>">
 <% end %>
@@ -21,14 +21,15 @@
             <dd><a href="mailto:mail@mail.com">mail@mail.com</a></dd>
           </dl>
         </div>
-        <div class="contacts__social">
-          <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Linkedin</a></li>
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Bitbucket</a></li>
-          </ul>
-        </div>
+        <% if SocialLink.active.where(link_type: :any).or(SocialLink.active.where(link_type: :footer)).any? %>
+          <div class="contacts__social">
+            <ul>
+              <% SocialLink.active.where(link_type: :any).or(SocialLink.active.where(link_type: :footer)).order(:order).each do |social| %>
+                <li><a href="<%= social.link %>" target="_blank"><%= social.name%></a></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
       <div class="col-md-7 col-lg-5">
         <div class="contacts__form">
@@ -58,7 +59,7 @@
       </div>
     </div>
   </div>
-<% if SiteDocument.where(slug: "contact_background_image").exists? && SiteDocument.where(slug: "contact_background_image").first.document.present? %>
+<% if SiteDocument.active.where(slug: "contact_background_image").exists? && SiteDocument.active.where(slug: "contact_background_image").first.document.present? %>
   </div>
 <% else %>
   </div>

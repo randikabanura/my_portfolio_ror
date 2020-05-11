@@ -7,6 +7,7 @@ class CreateResumeItems < ActiveRecord::Migration[6.0]
       t.string :title
       t.date :start
       t.date :end
+      t.boolean :status, default: true
 
       t.timestamps
     end

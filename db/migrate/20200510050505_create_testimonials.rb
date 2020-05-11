@@ -6,6 +6,7 @@ class CreateTestimonials < ActiveRecord::Migration[6.0]
       t.string :designation
       t.string :project
       t.text :content
+      t.boolean :status, default: true
       
       t.timestamps
     end

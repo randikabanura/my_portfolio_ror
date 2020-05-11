@@ -2,20 +2,9 @@ ActiveAdmin.register SiteDocument do
   menu label: 'Documents'
   config.filters = false
   actions :all, except: %i[ destroy]
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  permit_params :slug, :document
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:slug]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+
+  permit_params :slug, :document, :status
+
   index do
     column :slug
     column :document do |image|
@@ -25,6 +14,7 @@ ActiveAdmin.register SiteDocument do
         image_tag(image.document.variant(resize: '50x50!'))
       end
     end
+    toggle_bool_column :status
     column :created_at
     column :updated_at
     actions
@@ -41,6 +31,7 @@ ActiveAdmin.register SiteDocument do
             image_tag(image.document.variant(resize: '50x50!'))
           end
         end
+        row :status
         row :created_at
         row :updated_at
       end
@@ -59,6 +50,7 @@ ActiveAdmin.register SiteDocument do
       else
         f.input :document, as: :file, hint: image_tag(f.object.document.variant(resize: '250x250!'))
       end
+      f.input :status
     end
     f.actions
   end

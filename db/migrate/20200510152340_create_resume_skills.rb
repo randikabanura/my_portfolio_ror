@@ -4,7 +4,8 @@ class CreateResumeSkills < ActiveRecord::Migration[6.0]
       t.integer :order
       t.string :title
       t.integer :percentage
-
+      t.boolean :status, default: true
+      
       t.timestamps
     end
   end

@@ -1,5 +1,6 @@
 class Testimonial < ApplicationRecord
   validates_presence_of :name, :project, :designation, :content
+  scope :active, -> { where(status: true) }
   
   after_create :set_slug
   

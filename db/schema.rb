@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_170417) do
+ActiveRecord::Schema.define(version: 2020_05_10_193759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_170417) do
     t.string "title"
     t.date "start"
     t.date "end"
+    t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_170417) do
     t.integer "order"
     t.string "title"
     t.integer "percentage"
+    t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -93,6 +95,18 @@ ActiveRecord::Schema.define(version: 2020_05_10_170417) do
 
   create_table "site_documents", force: :cascade do |t|
     t.string "slug"
+    t.boolean "status", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "social_links", force: :cascade do |t|
+    t.string "name"
+    t.string "icon_text"
+    t.integer "link_type"
+    t.integer "order"
+    t.text "link"
+    t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,6 +117,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_170417) do
     t.string "designation"
     t.string "project"
     t.text "content"
+    t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
