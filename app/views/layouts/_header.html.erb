@@ -4,12 +4,18 @@
       <div class="menu__wrapper d-none d-lg-block col-md-12">
         <nav class="">
           <ul>
-            <li><a href="#hello">Hello</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#testimonials">testimonials</a></li>
-            <li><a href="#blog">blog</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <% if request.url.include?("blogs") %>
+              <li><a href="<%= root_path %>">Home</a></li>
+              <li><a href="#posts">other posts</a></li>
+              <li><a href="#contact">Contact</a></li>
+            <% else %>
+              <li><a href="#hello">Hello</a></li>
+              <li><a href="#resume">Resume</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#testimonials">testimonials</a></li>
+              <li><a href="#blog">blog</a></li>
+              <li><a href="#contact">Contact</a></li>
+            <% end %>
           </ul>
         </nav>
       </div>
@@ -31,12 +37,18 @@
     </div>
     <nav class="mobile-menu__wrapper">
       <ul>
-        <li><a href="#hello">Hello</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#testimonials">testimonials</a></li>
-        <li><a href="#blog">blog</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <% if request.url.include?("blogs") %>
+          <li><a href="<%= root_path %>">Home</a></li>
+          <li><a href="#posts">other posts</a></li>
+          <li><a href="#contact">Contact</a></li>
+        <% else %>
+          <li><a href="#hello">Hello</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">testimonials</a></li>
+          <li><a href="#blog">blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        <% end %>
       </ul>
     </nav>
   </div>

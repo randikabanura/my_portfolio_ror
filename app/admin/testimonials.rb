@@ -14,7 +14,7 @@ ActiveAdmin.register Testimonial do
   end
 
   form do |f|
-    f.inputs 'Tesimonial Information' do
+    f.inputs 'Testimonial Information' do
       f.input :name
       f.input :designation
       f.input :project

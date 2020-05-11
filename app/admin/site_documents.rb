@@ -47,6 +47,8 @@ ActiveAdmin.register SiteDocument do
       end
       if f.object.new_record? || (!f.object.document.present? || f.object.slug == 'resume')
         f.input :document, as: :file
+      elsif !f.object.document.content_type.in?(%w(image/png image/jpg image/jpeg))
+        f.input :document, as: :file
       else
         f.input :document, as: :file, hint: image_tag(f.object.document.variant(resize: '250x250!'))
       end

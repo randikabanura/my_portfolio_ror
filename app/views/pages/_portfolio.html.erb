@@ -1,0 +1,36 @@
+<% Project.active.each do |project| %>
+<div class="modal fade portfolio-modal" id="portfolioModal-<%= project.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body col-md-11 col-lg-9 ml-auto mr-auto">
+        <p class="portfolio-modal__title"><%= project.title %></p>
+        <% if project.image.present? %>
+          <%= image_tag project.image, class: 'portfolio-modal__img' %>
+        <% else %>
+          <img class="portfolio-modal__img" src="<%= asset_path('img_project_1_mono.png') %>" alt="modal_img">
+        <% end %>
+
+        <p class="portfolio-modal__description"><%= project.description.html_safe %></p>
+        <div class="portfolio-modal__link">
+          <a href="<%= project.website %>"><%= project.website %></a>
+        </div>
+        <% if project.tags.split(',').any? %>
+        <div  class="portfolio-modal__stack">
+          <p class="portfolio-modal__stack-title">Used stack:</p>
+          <ul class="tags">
+            <% project.tags.split(',').each do |tag| %>
+              <li><%= tag %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -61,3 +61,4 @@ gem 'activeadmin_settings_cached', '~> 2.0', '>= 2.0.1'
 gem 'activeadmin_medium_editor'
 gem 'waypoints_rails'
 gem "mini_magick"
+gem 'friendly_id', '~> 5.2.4'
