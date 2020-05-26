@@ -11,9 +11,15 @@
             <% else %>
               <li><a href="#hello">Hello</a></li>
               <li><a href="#resume">Resume</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#testimonials">testimonials</a></li>
-              <li><a href="#blog">blog</a></li>
+              <% if Project.active.any? %>
+                <li><a href="#portfolio">Portfolio</a></li>
+              <% end %>
+              <% if Testimonial.active.any? %>
+                <li><a href="#testimonials">testimonials</a></li>
+              <% end %>
+              <% if Blog.active.any? %>
+                <li><a href="#blog">blog</a></li>
+              <% end %>
               <li><a href="#contact">Contact</a></li>
             <% end %>
           </ul>
