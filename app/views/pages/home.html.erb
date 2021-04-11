@@ -19,7 +19,7 @@
         <div class="personal-profile__contacts">
           <dl class="contact-list contact-list__opacity-titles">
             <dt>Age:</dt>
-            <dd>25</dd>
+            <dd><%= calculate_age(Settler.profile_birthday.value) %></dd>
             <dt>Phone:</dt>
             <dd><a href="tel:<%= Settler.profile_phone.value %>"><%= number_to_phone(Settler.profile_phone.value, area_code: true, country_code: 94)  %></a></dd>
             <dt>Email:</dt>

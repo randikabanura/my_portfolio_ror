@@ -27,6 +27,14 @@ settings: &settings
     deletable: false
     validations:
       presence: true
+  profile_birthday:
+    label: Profile Birthday
+    value: '1996-06-03'
+    editable: true
+    deletable: false
+    typecast: DateTypecaster
+    validations:
+      presence: true
   profile_email:
     label: Profile Email
     value: 'randika.banura@gmail.com'
@@ -50,6 +58,13 @@ settings: &settings
       presence: true
   profile_introduction_button_cv:
     label: Profile Introduction Button
+    value: ''
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_skype:
+    label: Profile Skype
     value: ''
     editable: true
     deletable: false
