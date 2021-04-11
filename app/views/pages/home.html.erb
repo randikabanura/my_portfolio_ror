@@ -14,18 +14,18 @@
         <% end %>
       </div>
       <div class="col-md-8">
-        <p class="personal-profile__name"><%= Setting.profile_name %></p>
-        <p class="personal-profile__work"><%= Setting.profile_work %></p>
+        <p class="personal-profile__name"><%= Settler.profile_name.value %></p>
+        <p class="personal-profile__work"><%= Settler.profile_work.value %></p>
         <div class="personal-profile__contacts">
           <dl class="contact-list contact-list__opacity-titles">
             <dt>Age:</dt>
-            <dd><%= Setting.profile_age %></dd>
+            <dd>25</dd>
             <dt>Phone:</dt>
-            <dd><a href="tel:<%= Setting.profile_phone %>"><%= number_to_phone(Setting.profile_phone, area_code: true, country_code: 94)  %></a></dd>
+            <dd><a href="tel:<%= Settler.profile_phone.value %>"><%= number_to_phone(Settler.profile_phone.value, area_code: true, country_code: 94)  %></a></dd>
             <dt>Email:</dt>
-            <dd><a href="mailto:<%= Setting.profile_email %>"><%= Setting.profile_email %></a></dd>
+            <dd><a href="mailto:<%= Settler.profile_email.value %>"><%= Settler.profile_email.value %></a></dd>
             <dt>Address:</dt>
-            <dd><%= Setting.profile_address %></dd>
+            <dd><%= Settler.profile_address.value %></dd>
           </dl>
         </div>
         <% if SocialLink.active.where(link_type: :any).or(SocialLink.active.where(link_type: :profile)).any? %>
@@ -49,9 +49,9 @@
 <section id="hello" class="container section">
   <div class="row">
     <div class="col-md-10">
-      <h2 id="hello_header" class="section__title"><%= Setting.profile_introduction_greeting %></h2>
-      <p class="section__description"><%= Setting.profile_introduction.html_safe %></p>
-      <a href="#" class="section_btn site-btn"><img src="<%= asset_path('img_btn_icon.png')%>" alt=""><%= Setting.profile_introduction_button_cv %></a>
+      <h2 id="hello_header" class="section__title"><%= Settler.profile_introduction_greeting.value %></h2>
+      <p class="section__description"><%= Settler.profile_introduction.value.html_safe %></p>
+      <a href="#" class="section_btn site-btn"><img src="<%= asset_path('img_btn_icon.png')%>" alt=""><%= Settler.profile_introduction_button_cv.value %></a>
     </div>
   </div>
 </section>
@@ -63,8 +63,8 @@
 <section id="resume" class="container section">
   <div class="row">
     <div class="col-md-10">
-      <h2 id="resume_header" class="section__title"><%= Setting.resume_title %></h2>
-      <p class="section__description"><%= Setting.resume_introduction.html_safe %></p>
+      <h2 id="resume_header" class="section__title"><%= Settler.resume_title.value %></h2>
+      <p class="section__description"><%= Settler.resume_introduction.value.html_safe %></p>
     </div>
   </div>
   <% if ResumeItem.active.where(item_type: :education).any? %>

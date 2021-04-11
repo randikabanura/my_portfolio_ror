@@ -18,7 +18,7 @@ ActiveAdmin.register Testimonial do
       f.input :name
       f.input :designation
       f.input :project
-      f.input :content, as: :medium_editor
+      f.input :content, as: :medium_editor, input_html: {  class: 'medium-editor' }
       f.input :status
     end
 

@@ -45,8 +45,8 @@ ActiveAdmin.register Project do
   form do |f|
     f.inputs 'Project Information' do
       f.input :title
-      f.input :introduction, as: :medium_editor
-      f.input :description, as: :medium_editor
+      f.input :introduction, as: :medium_editor, input_html: {  class: 'medium-editor' }
+      f.input :description, as: :medium_editor, input_html: {  class: 'medium-editor' }
       f.input :tags, as: :tags
       if f.object.new_record? || f.object.image.blank?
         f.input :image, as: :file

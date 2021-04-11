@@ -1,0 +1,89 @@
+settings: &settings
+  profile_name:
+    label: Profile Name
+    value: 'Banura Randika'
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_work:
+    label: Profile Work
+    value: 'Software Engineer'
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_phone:
+    label: Profile Phone
+    value: '+94778078742'
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_address:
+    label: Profile Address
+    value: '248, Panadura Road, Horana'
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_email:
+    label: Profile Email
+    value: 'randika.banura@gmail.com'
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_introduction:
+    label: Profile Introduction
+    value: ''
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_introduction_greeting:
+    label: Profile Introduction Greeting
+    value: ''
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  profile_introduction_button_cv:
+    label: Profile Introduction Button
+    value: ''
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  resume_title:
+    label: Resume Title
+    value: ''
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+  resume_introduction:
+    label: Resume Introduction
+    value: ''
+    editable: true
+    deletable: false
+    validations:
+      presence: true
+#  search_algorithm:
+#    label: Default search engine
+#    value: 'ferret'
+#    editable: true
+#    validations:
+#      inclusion: [ 'ferret' , 'sphinx' ]
+#  white_list:
+#    label: 'White-listed words'
+#    value: 'herp, derp'
+
+development:
+  <<: *settings
+
+test:
+  <<: *settings
+
+production:
+  <<: *settings
