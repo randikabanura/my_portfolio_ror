@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_173716) do
 
   create_table "site_documents", force: :cascade do |t|
     t.string "slug"
+    t.string "name"
     t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

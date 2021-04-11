@@ -3,10 +3,10 @@ ActiveAdmin.register SiteDocument do
   config.filters = false
   actions :all, except: %i[ destroy]
 
-  permit_params :slug, :document, :status
+  permit_params :slug, :document, :status, :name
 
   index do
-    column :slug
+    column :name
     column :document do |image|
       if image.slug == 'resume'
         'PDF file cannot be previewed'
@@ -23,7 +23,7 @@ ActiveAdmin.register SiteDocument do
   show do |document|
     panel 'Document Information' do
       attributes_table_for(document) do
-        row :slug
+        row :name
         row :document do |image|
           if image.slug == 'resume'
             'PDF file cannot be previewed'
@@ -41,9 +41,9 @@ ActiveAdmin.register SiteDocument do
   form do |f|
     f.inputs do
       if Rails.env.development?
-        f.input :slug
+        f.input :name
       else
-        f.input :slug, input_html: { disabled: true }
+        f.input :name, input_html: { disabled: true }
       end
       if f.object.new_record? || (!f.object.document.present? || f.object.slug == 'resume')
         f.input :document, as: :file
