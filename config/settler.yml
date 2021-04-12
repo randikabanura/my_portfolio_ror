@@ -65,7 +65,7 @@ settings: &settings
       presence: true
   profile_skype:
     label: Profile Skype
-    value: ''
+    value: 'randika-banura'
     editable: true
     deletable: false
     validations:
