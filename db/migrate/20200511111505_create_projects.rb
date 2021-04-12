@@ -8,7 +8,6 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.string :tags
       t.string :website
       t.integer :order
-      t.string :image
       t.boolean :status, default: true
 
       t.timestamps

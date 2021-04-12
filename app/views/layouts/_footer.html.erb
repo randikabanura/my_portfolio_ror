@@ -1,5 +1,5 @@
-<% if SiteImage.active.where(slug: "contact_background_image").exists? && SiteImage.active.where(slug: "contact_background_image")&.first&.image&.url&.present? %>
-  <div class="background slider-carousel" style="background-image: url(<%= rails_blob_path(SiteImage.active.where(slug: "contact_background_image").first.image.url, disposition: "attachment", only_path: true) %>)">
+<% if SiteDocument.active.where(slug: "contact_background_image").exists? && SiteDocument.active.where(slug: "contact_background_image").first.document.present? %>
+  <div class="background slider-carousel" style="background-image: url(<%= rails_blob_path(SiteDocument.active.where(slug: "contact_background_image").first.document, disposition: "attachment", only_path: true) %>)">
 <% else %>
   <div class="background" style="background-image: url(<%= asset_path('img_bg_main.jpg') %>">
 <% end %>

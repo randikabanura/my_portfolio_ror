@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_172943) do
+ActiveRecord::Schema.define(version: 2021_04_11_173716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_172943) do
     t.string "tags"
     t.boolean "status", default: true
     t.integer "order"
-    t.string "image"
     t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -95,7 +94,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_172943) do
     t.string "tags"
     t.string "website"
     t.integer "order"
-    t.string "image"
     t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -137,16 +135,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_172943) do
   create_table "site_documents", force: :cascade do |t|
     t.string "slug"
     t.string "name"
-    t.string "document"
-    t.boolean "status", default: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "site_images", force: :cascade do |t|
-    t.string "slug"
-    t.string "name"
-    t.string "image"
     t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

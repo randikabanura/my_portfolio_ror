@@ -313,7 +313,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  carrierwave
+  carrierwave (~> 2.0)
   devise
   friendly_id (~> 5.2.4)
   jbuilder (~> 2.7)

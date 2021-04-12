@@ -3,7 +3,6 @@ class CreateSiteDocuments < ActiveRecord::Migration[6.0]
     create_table :site_documents do |t|
       t.string :slug
       t.string :name
-      t.string :document
       t.boolean :status, default: true
       
       t.timestamps
