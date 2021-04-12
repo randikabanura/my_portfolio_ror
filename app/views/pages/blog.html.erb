@@ -8,10 +8,10 @@
         <p class="article__title"><%= @blog.title %></p>
         <p class="article_date"><%= @blog.updated_at.strftime("%B %d, %Y") %></p>
         <% if @blog.image.present? %>
-        <figure>
-          <%= image_tag @blog.image %>
-          <figcaption>This is how I organize my HTML, CSS and PHP files</figcaption>
-        </figure>
+          <figure>
+            <%= image_tag @blog.image %>
+            <figcaption>This is how I organize my HTML, CSS and PHP files</figcaption>
+          </figure>
         <% end %>
         <p><%= @blog.description.html_safe %></p>
         <p class="article__share">Share this post:
@@ -23,59 +23,33 @@
   </div>
 </div>
 
-<section id="posts" class="container section">
-  <div class="row">
-    <div class="col-md-12">
-      <h2  id="other_posts" class="section__title">Other Posts_</h2>
+<% if @other_posts.present? %>
+  <section id="posts" class="container section">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 id="other_posts" class="section__title">Other Posts_</h2>
+      </div>
     </div>
-  </div>
 
-  <div class="row posts">
-    <div class="col-md-5 mr-auto">
-      <div class="posts__item">
-        <a href="#">
-          <h3 class="posts__title">What’s new in the IT Industry?</h3>
-          <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-            Ye show done an into.</p>
-        </a>
+    <div class="row posts">
+      <div class="col-md-5 mr-auto">
+        <div class="posts__item">
+          <% @other_posts&.first&.each do |post| %>
+            <a href="<%= blogs_path(post) %>">
+              <h3 class="posts__title"><%= post.title %></h3>
+              <p class="posts__description"><%= truncate(post.description, length: 100, escape: false) %></p>
+            </a>
+          <% end %>
+        </div>
       </div>
-      <div class="posts__item">
-        <a href="#">
-          <h3 class="posts__title">How I organize my work with code</h3>
-          <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-            Ye show done an into.</p>
-        </a>
-      </div>
-      <div class="posts__item">
-        <a href="#">
-          <h3 class="posts__title">How to use css-preprocessor</h3>
-          <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-            Ye show done an into.</p>
-        </a>
+      <div class="col-md-5 mr-auto">
+        <% @other_posts&.second&.each do |post| %>
+          <a href="<%= blogs_path(post) %>">
+            <h3 class="posts__title"><%= post.title %></h3>
+            <p class="posts__description"><%= truncate(post.description, length: 100, escape: false) %></p>
+          </a>
+        <% end %>
       </div>
     </div>
-    <div class="col-md-5 mr-auto">
-      <div class="posts__item">
-        <a href="#">
-          <h3 class="posts__title">What’s new in the IT Industry?</h3>
-          <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-            Ye show done an into.</p>
-        </a>
-      </div>
-      <div class="posts__item">
-        <a href="#">
-          <h3 class="posts__title">How I organize my work with code</h3>
-          <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-            Ye show done an into.</p>
-        </a>
-      </div>
-      <div class="posts__item">
-        <a href="#">
-          <h3 class="posts__title">How to use css-preprocessor</h3>
-          <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-            Ye show done an into.</p>
-        </a>
-      </div>
-    </div>
-  </div>
+<% end %>
 </section>

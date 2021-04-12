@@ -14,7 +14,7 @@
         <div class="contacts__list">
           <dl class="contact-list">
             <dt>Phone:</dt>
-            <dd><a href="tel:<%= Settler.profile_phone.value %>"><%= Settler.profile_phone.value %></a></dd>
+            <dd><a href="tel:<%= Settler.profile_phone.value %>"><%= number_to_phone(Settler.profile_phone.value, area_code: true, country_code: 94) %></a></dd>
             <dt>Skype:</dt>
             <dd><a href="skype:<%= Settler.profile_skype.value %>"><%= Settler.profile_skype.value %></a></dd>
             <dt>Email:</dt>
@@ -25,7 +25,7 @@
           <div class="contacts__social">
             <ul>
               <% SocialLink.active.where(link_type: :any).or(SocialLink.active.where(link_type: :footer)).order(:order).each do |social| %>
-                <li><a href="<%= social.link %>" target="_blank"><%= social.name%></a></li>
+                <li><a href="<%= social.link %>" target="_blank"><%= social.name %></a></li>
               <% end %>
             </ul>
           </div>

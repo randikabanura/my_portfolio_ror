@@ -170,6 +170,11 @@ ActiveRecord::Schema.define(version: 2021_04_12_172943) do
     t.string "project"
     t.text "content"
     t.boolean "status", default: true
+    t.string "avatar"
+    t.string "facebook"
+    t.string "instagram"
+    t.string "github"
+    t.string "linkedin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

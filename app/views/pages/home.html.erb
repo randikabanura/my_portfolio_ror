@@ -21,7 +21,7 @@
             <dt>Age:</dt>
             <dd><%= calculate_age(Settler.profile_birthday.value) %></dd>
             <dt>Phone:</dt>
-            <dd><a href="tel:<%= Settler.profile_phone.value %>"><%= number_to_phone(Settler.profile_phone.value, area_code: true, country_code: 94)  %></a></dd>
+            <dd><a href="tel:<%= Settler.profile_phone.value %>"><%= number_to_phone(Settler.profile_phone.value, area_code: true, country_code: 94) %></a></dd>
             <dt>Email:</dt>
             <dd><a href="mailto:<%= Settler.profile_email.value %>"><%= Settler.profile_email.value %></a></dd>
             <dt>Address:</dt>
@@ -220,7 +220,9 @@
               <div class="row">
                 <div class="col-md-10 col-sm-10 col-10 mr-auto ml-auto">
                   <p class="slider-carousel__title"><%= testimonial.name %></p>
-                  <p class="slider-carousel__caption">Project: <%= testimonial.project %></p>
+                  <% if testimonial.project.strip.present? %>
+                    <p class="slider-carousel__caption">Project: <%= testimonial.project %></p>
+                  <% end %>
                   <hr>
                   <p class="slider-carousel__description"><%= testimonial.content.html_safe %> </p>
                 </div>

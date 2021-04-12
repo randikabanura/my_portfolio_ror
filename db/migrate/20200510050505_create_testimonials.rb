@@ -7,6 +7,11 @@ class CreateTestimonials < ActiveRecord::Migration[6.0]
       t.string :project
       t.text :content
       t.boolean :status, default: true
+      t.string :avatar
+      t.string :facebook
+      t.string :instagram
+      t.string :github
+      t.string :linkedin
       
       t.timestamps
     end
