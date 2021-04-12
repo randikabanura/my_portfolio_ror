@@ -7,6 +7,7 @@ class CreateBlogs < ActiveRecord::Migration[6.0]
       t.string :tags
       t.boolean :status, default: true
       t.integer :order
+      t.string :image
       t.string :slug
 
       t.timestamps

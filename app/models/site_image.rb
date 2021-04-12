@@ -1,5 +1,5 @@
-class SiteDocument < ApplicationRecord
-  mount_uploader :document, DocumentUploader
+class SiteImage < ApplicationRecord
+  mount_uploader :image, ImageUploader
 
   validates_presence_of :slug, :name
   validates_uniqueness_of :slug

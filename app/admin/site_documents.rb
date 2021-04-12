@@ -1,5 +1,5 @@
 ActiveAdmin.register SiteDocument do
-  menu label: 'Documents'
+  menu label: 'Documents', parent: 'Site Details'
   config.filters = false
   actions :all, except: %i[ destroy]
 
@@ -7,11 +7,11 @@ ActiveAdmin.register SiteDocument do
 
   index do
     column :name
-    column :document do |image|
-      if image.slug == 'resume'
-        'PDF file cannot be previewed'
-      elsif image.document.present?
-        image_tag(image.document.variant(resize: '50x50!'))
+    column :document do |site_document|
+      if site_document.document.url.present?
+        'Document cannot be previewed'
+      else
+        'Document is not available'
       end
     end
     toggle_bool_column :status
@@ -20,15 +20,15 @@ ActiveAdmin.register SiteDocument do
     actions
   end
 
-  show do |document|
+  show do |site_document|
     panel 'Document Information' do
-      attributes_table_for(document) do
+      attributes_table_for(site_document) do
         row :name
-        row :document do |image|
-          if image.slug == 'resume'
-            'PDF file cannot be previewed'
-          elsif image.document.present?
-            image_tag(image.document.variant(resize: '50x50!'))
+        row :document do |site_document|
+          if site_document.document.url.present?
+            'Document cannot be previewed'
+          else
+            'Document is not available'
           end
         end
         row :status
@@ -39,18 +39,14 @@ ActiveAdmin.register SiteDocument do
   end
 
   form do |f|
+    h1 do
+      f.object.name
+    end
     f.inputs do
-      if Rails.env.development?
-        f.input :name
-      else
-        f.input :name, input_html: { disabled: true }
-      end
-      if f.object.new_record? || (!f.object.document.present? || f.object.slug == 'resume')
-        f.input :document, as: :file
-      elsif !f.object.document.content_type.in?(%w(image/png image/jpg image/jpeg))
+      if f.object.new_record?
         f.input :document, as: :file
       else
-        f.input :document, as: :file, hint: image_tag(f.object.document.variant(resize: '250x250!'))
+        f.input :document, as: :file, hint: 'Document is already available'
       end
       f.input :status
     end
